@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
 
 [project]
 name = "sensespace-did"
@@ -8,13 +8,12 @@ version = "0.1.0"
 description = "SenseSpace DID token verification library"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "Shiotoli", email = "shiotoli@gmail.com" }]
 keywords = ["did", "jwt", "verification", "sensespace", "ed25519", "ss58"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -28,9 +27,15 @@ dependencies = [
     "fastmcp>=2.11.0",
 ]
 
+[tool.setuptools]
+license-files = ["LICENSE*", "COPYING*", "NOTICE*"]
+
 [project.optional-dependencies]
 dev = ["pytest>=7.0.0", "black>=23.0.0", "ruff>=0.1.0"]
 
 [project.urls]
 "Homepage" = "https://github.com/verisense-network/sensespace-did"
 "Bug Tracker" = "https://github.com/verisense-network/sensespace-did/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["sensespace_did"]
